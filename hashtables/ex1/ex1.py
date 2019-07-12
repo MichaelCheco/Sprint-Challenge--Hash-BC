@@ -1,4 +1,5 @@
 #  Hint:  You may not need all of these.  Remove the unused functions.
+
 from hashtables import (HashTable,
                         hash_table_insert,
                         hash_table_remove,
@@ -7,12 +8,13 @@ from hashtables import (HashTable,
 
 
 def get_indices_of_item_weights(weights, length, limit):
-    ht = HashTable(16)
-
-    """
-    YOUR CODE HERE
-    """
-
+    ht = HashTable(length)
+    for index, weight in enumerate(weights):
+        hash_table_insert(ht, weight, index)
+    for ind, weight in enumerate(weights):
+        value = hash_table_retrieve(ht, limit - weight)
+        if value:
+            return (value, ind)
     return None
 
 
